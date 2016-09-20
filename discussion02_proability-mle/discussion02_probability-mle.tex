@@ -4,8 +4,9 @@
 %% MODIFY:  Document-specific Packages ----------------------------------------------
 
 % References
-\usepackage{biblatex}
-\addbibresource{dis02_references.bib}
+% \usepackage{biblatex}
+\usepackage{natbib}
+% \addbibresource{dis02_references.bib}
 
 %% MODIFY:  Document-specific Commands ----------------------------------------------
 \renewcommand{\a}{\mathbf{a}}
@@ -97,7 +98,7 @@ For more on discrete random variables, read \href{http://ocw.mit.edu/courses/mat
 
 \section{Two Approaches to Data Analysis}
 
-There are two cultures in the use of statistical modeling to reach conclusions from data \cite{breiman2001}, each differing in their goals and assumptions.  We are typically given a vector of input variables $\X$ and the corresponding response variables $\Y$, which have been created by nature in response to the input variables. Once we have a dataset, we may be interested in either the \textbf{prediction} of response variables for future input variables or in extracting \textbf{information} about how nature is associating the response variables with the input variables from within its black box.
+There are two cultures in the use of statistical modeling to reach conclusions from data \citep{breiman2001}, each differing in their goals and assumptions.  We are typically given a vector of input variables $\X$ and the corresponding response variables $\Y$, which have been created by nature in response to the input variables. Once we have a dataset, we may be interested in either the \textbf{prediction} of response variables for future input variables or in extracting \textbf{information} about how nature is associating the response variables with the input variables from within its black box.
 
 \begin{figure}[h!]
     \centering
@@ -232,6 +233,6 @@ Suppose we observe $N$ samples from the density function $p_\theta(x) = \frac{1}
 %%%% REFERENCES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Bibliography
-\printbibliography
-
+\bibliographystyle{plainnat}
+\bibliography{dis02_references}
 \end{document}

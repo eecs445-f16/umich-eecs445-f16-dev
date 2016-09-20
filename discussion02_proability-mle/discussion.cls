@@ -32,13 +32,13 @@
 
 % Math / Theorems
 \usepackage{amsmath,amsthm,amssymb}		% AMS Math
-\usepackage{thmtools}					% Theorem Tools
+%\usepackage{thmtools}					% Theorem Tools
 \usepackage{mathtools}					% Theorem Tools
-\usepackage{esint}						% Alternate Integral Symbols
+%\usepackage{esint}						% Alternate Integral Symbols
 
 % Misc
 \usepackage{url}						% URL Formatting
-\usepackage{soul}                       % Sane Unnderlines
+%\usepackage{soul}                       % Sane Unnderlines
 \usepackage{color}                      % Colors
 \usepackage[colorlinks = true,
             linkcolor = blue,
@@ -142,13 +142,13 @@
    \markboth{Discussion #1: #2}{Discussion #1: #2}
    \vspace*{4mm}
 }
-\renewcommand{\cite}[1]{[#1]}
-\def\beginrefs{\begin{list}
-        {[\arabic{equation}]}{\usecounter{equation}
-         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
-         \setlength{\labelwidth}{1.6truecm}}}
-\def\endrefs{\end{list}}
-\def\bibentry#1{\item[\hbox{[#1]}]}
+%\renewcommand{\cite}[1]{[#1]}
+%\def\beginrefs{\begin{list}
+%        {[\arabic{equation}]}{\usecounter{equation}
+%         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+%         \setlength{\labelwidth}{1.6truecm}}}
+%\def\endrefs{\end{list}}
+%\def\bibentry#1{\item[\hbox{[#1]}]}
 
 \newcommand{\challenge}[2]{\noindent \textbf{(Challenge Problem)} \emph{#1}: #2 }
 

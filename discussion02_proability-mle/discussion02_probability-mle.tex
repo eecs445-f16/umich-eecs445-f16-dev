@@ -18,12 +18,12 @@
 \begin{document}
 
 %% MODIFY: Lecture Info -------------------------------------------------------------
-\lecture{2}{Probability \& Bayesian Paradigm}{Benjamin Bray}
+\lecture{2}{Probability \& Bayesian Paradigm}{Benjamin Bray and Chansoo Lee}
 
 %%%% TWO APPROACHES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Writing Mathematical Proofs}
 
-\subsection*{Online Resources}
+Online Resources:
 \begin{itemize}
 \item Prof. John Lee at University of Washington has an excellent writeup focusing on writing techniques. \href{https://www.math.washington.edu/~lee/Writing/writing-proofs.pdf}{[link]}
 \item Prof. Michael Hutchings at UC Berkeley has a more beginner-friendly writeup which includes basic proof templates. \href{https://math.berkeley.edu/~hutching/teach/proofs.pdf}{[link]}
@@ -57,8 +57,7 @@ We will review the essential probability definitions using two-dice example.
 \[\E[X] = \sum_{x \in \Omega(X)} f_X(x) x \]
 \item \textbf{Conditional expectation} of $X$ given $Y$ is a function of $Y$ defined as:
 \[\E[X | Y] = \sum_{x \in \Omega(X)} f_{X | Y}(x) x \]
-\item \textbf{Variance} of $X$ is defined as:
-\[\var[X] = \E[(X - \E(X))^2].\]
+\item \textbf{Variance} of $X$ is defined as: $\var[X] = \E[(X - \E(X))^2].$
 \end{itemize}
 
 \vspace{1em}
@@ -119,12 +118,12 @@ There are two different approaches toward these goals.  Analysis in the \textbf{
     \Y &\sim f(\X, \eps, \theta)
 \end{align*}
 
-Once the values of the parameters are estimated from the data, the model can be used for information or prediction.  Different data models work best in different settings, and care must be taken to choose an appropriate model.  Statisticians use \textit{goodness-of-fit} tests to check that their data models do not make wildly inappropriate assumptions about the data.  Many classical statistical models fall under this category, including linear regression, logistic regression, mixture models, and probabilistic graphical models in general.
+Once the values of the parameters are estimated from the data, the model can be used for information or prediction.  Different data models work best in different settings, and care must be taken to choose an appropriate model.  Statisticians use \textit{goodness-of-fit} tests to check that their data models do not make wildly inappropriate assumptions about the data.  Many classical statistical models fall under this category, including linear regression, logistic regression, mixture models, and generative probabilistic graphical models in general.
 
 %% Algorithmic Modeling -------------------------------------------------------------
 \subsection*{Algorithmic Modeling Culture}
 
-Analysis in the \textbf{algorithmic modeling culture} (i.e. most computer scientists) assumes that the inside of the black box is far too complex and unknown to model directly.  Instead, their approach is to find an algorithm $f(\X)$ that operates on the input variables to predict the response variables.  Because algorithmic modelers are willing to sacrifice interpretability of their models for higher accuracy, they are more able to take advantage of powerful, one-size-fits-most techniques like deep learning and random forest models.
+Analysis in the \textbf{algorithmic modeling culture} (i.e. most computer scientists) assumes that the inside of the black box is far too complex and unknown to model directly.  Instead, their approach is to find an algorithm $f(\X)$ that operates on the input variables to predict the response variables.  Because algorithmic modelers are willing to sacrifice interpretability of their models for higher accuracy, they are more able to take advantage of powerful, one-size-fits-most techniques like deep neural nets and random forest models.
 
 \begin{figure*}[h!]
     \centering
@@ -149,9 +148,9 @@ Each approach to data analysis has its merits, and this is a vastly oversimplifi
 %%%% PROBABILISTIC MODELING %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Probabilistic Modeling: Maximum Likelihood}
 
-Let $\mathcal{D}$ be a family of distributions over $n$ samples, parametrized by $\theta$, where each element has joint pmf(pdf) $\mu_\theta$. \textbf{Likelihood} is a function of the distribution parameter $\theta$ given samples (data) $X_1, \ldots, X_n$:
-\[L(\theta; X_1, \ldots, X_n) = \mu_\theta(X_i, \ldots, X_n).\]
-We mostly consider a special case of \emph{product distributions}, where $\mu_\theta(X_i, \ldots, X_n) = \prod_{i=1}^{N} \theta(X_i).$
+Let $\mathcal{D}$ be a family of distributions over $n$ samples, parametrized by $\theta$, where each element has joint pmf(pdf) $p(\cdot;\theta)$ over $n$ samples. \textbf{Likelihood} is a function of the distribution parameter $\theta$ given samples (data) $X_1, \ldots, X_n$:
+\[L(\theta; X_1, \ldots, X_n) = p(X_i, \ldots, X_n; \theta).\]
+We mostly consider a special case of \emph{product distributions}, where $\mu_\theta(X_i, \ldots, X_n) = \prod_{i=1}^{N} p(X_i;\theta).$
 
 The maximum likelihood estimate $\hat{\theta}_{ML}$ is simply the maximizer for $L(\theta)$. It is the parameter value under which the observed data is most probable.
 
@@ -165,7 +164,7 @@ The maximum likelihood estimate $\hat{\theta}_{ML}$ is simply the maximizer for 
 \vspace{1em}
 
 \begin{exercise}(Discrete)
-Suppose we observe the result of $N$ flips of a coin with unknown bias $\theta$ (probability of heads).  
+Suppose we observe the result of $N$ flips of a coin with unknown bias $\theta$ (probability of heads).
 \begin{enumerate}
 \item Write the likelihood function for this example.
 \item Differentiate to find the MLE. 
@@ -180,18 +179,25 @@ Suppose we observe the result of $N$ flips of a coin with unknown bias $\theta$ 
     \end{align*}
 
 
-\vspace{1em}
+\vspace{.5em}
 
 \begin{exercise}(Continuous and bounded)
 Suppose we observe $N$ samples from uniform distribution over $[0, \theta]$. What is the MLE of $\theta$?  Hint: $L(\theta) = \theta^{-n}$.
 \end{exercise}
 
-\vspace{1em}
+\vspace{.5em}
 
 \begin{exercise}(Continuous and unbounded)
-Suppose we observe $N$ samples from the density function $p_\theta(x) = \frac{1}{2\theta} \exp(-|x| / \theta).$ What is the MLE of $\theta$?
+Suppose we observe $N$ samples from the density function $p(x;\theta) = \frac{1}{2\theta} \exp(-|x| / \theta).$ What is the MLE of $\theta$?
 \end{exercise}
 
+\paragraph{Remark} Remember that $\theta$ can be any mathematical object, such as:
+\begin{itemize}
+\item scalar, as in all examples above.
+\item vector, e.g. $(\mu,\sigma) \in \R^2$ when $\mathcal{D}$ is one-dimensional Gaussian.
+\item vector and matrix, e.g. $(\mu, \Sigma) \in \R^m \times \R^{m \times m}$ for mean vector and covariance matrix when $\mathcal{D}$ is multidimensional Gaussian.
+\end{itemize}
+If $L$ is a function of more than one variable, then the MLE requires optimizing over all variables.
 
 % %% Maximum a Posteriori -------------------------------------------------------------
 % \subsection*{Maximum a Posteriori Estimation}

@@ -32,7 +32,7 @@ Online Resources:
 Important things
 \begin{itemize}
 \item Do NOT start by stating the conclusion of an implication you are trying to prove. When you  prove $p$ implies $q$, $q$ should NEVER appear until the very end of the proof.
-\item Define variables (e.g. let $a$ be a real number) when they appear first time. In C/JAVA, you'd get a compile time error which prevents you from even \emph{submitting} a proof with undefined variables. In math proofs, you will get instead a \emph{run-time} error when readers try to understand your proof, like in Python. Remember that variables have no meaning until you define them.
+\item Define variables (e.g. let $a$ be a real number) when they appear first time. Not defining variables in math proofs is just as bad as not defining your variables when you program.
 \item Explain your logic with English sentences instead of ambiguous math symbols such as $\therefore$ and $\because$.  You wouldn't want your collaborators to write even more code when they \emph{document} their code.
 \end{itemize}
 
@@ -150,7 +150,7 @@ Each approach to data analysis has its merits, and this is a vastly oversimplifi
 
 Let $\mathcal{D}$ be a family of distributions over $n$ samples, parametrized by $\theta$, where each element has joint pmf(pdf) $p(\cdot;\theta)$ over $n$ samples. \textbf{Likelihood} is a function of the distribution parameter $\theta$ given samples (data) $X_1, \ldots, X_n$:
 \[L(\theta; X_1, \ldots, X_n) = p(X_i, \ldots, X_n; \theta).\]
-We mostly consider a special case of \emph{product distributions}, where $\mu_\theta(X_i, \ldots, X_n) = \prod_{i=1}^{N} p(X_i;\theta).$
+We mostly consider a special case of \emph{iid samples}, where $\mu_\theta(X_i, \ldots, X_n) = \prod_{i=1}^{N} p(X_i;\theta).$
 
 The maximum likelihood estimate $\hat{\theta}_{ML}$ is simply the maximizer for $L(\theta)$. It is the parameter value under which the observed data is most probable.
 
